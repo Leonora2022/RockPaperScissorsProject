@@ -53,20 +53,20 @@ function game(){
      output = getPlayRound(humanPlayer, computerPlayer);
      if(output === 'Player won!'){
         playerScore += 1;
-        console.log(`Player point is ${playerScore}`);
+        console.log(`Player point is ${playerScore}.`);
      }else if(output === 'Computer won!'){
         computerScore ++;
-        console.log(`Computer point is ${computerScore}`);
+        console.log(`Computer point is ${computerScore}.`);
      }else if(output === 'tie'){
         count += 1;
-        console.log('Try again');
+        console.log('Try again!');
      }
     }
     // comparing scores to detect winner
     if(playerScore > computerScore){
-        console.log(`Player won! with ${playerScore} pooints`);
+        console.log(`Player won! with ${playerScore} points`);
     }else {
-        console.log(`Computer won! with ${computerScore}`);
+        console.log(`Computer won! with ${computerScore} points`);
     }
 
 }
