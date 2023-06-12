@@ -1,0 +1,121 @@
+.box{
+    max-width: 80vw;
+    min-height: 90vh;
+    box-shadow: 1px 2px 6px  rgba(0, 0, 0, 0.7);
+    margin: 1.7rem auto;
+    border-radius: 0.5rem;
+    background-color: darkgray;
+    }
+    
+    h1[id="title"] {
+        text-align: center;
+        text-transform: uppercase;
+        word-spacing: 2rem;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-style: italic;
+    }
+    
+    button[id="choice"] {
+        padding: .7rem .2rem;
+        border-radius: 2rem;
+        float: left;
+        border: 2px double gold;
+        margin: 2px 0 2px 2px;
+    }
+     
+    div[id="image-choices"] {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10rem;
+    }
+    
+    .button {
+        background: none;
+        border: none;
+        outline: none;
+        font-size: 5rem;
+        cursor: pointer;
+        transition: all 1s;
+    }
+    
+    .button:hover {
+        transform: scale(1.5);
+        opacity: 0.1;
+    }
+    
+    div[id="players"] {
+       display: flex;
+       justify-content: space-evenly;
+       align-items: center;
+    }
+    
+    div.player {
+       font-size: 1.5rem;
+    }
+    
+    span[data-display-human], span[data-display-computer] {
+        display: block;
+        text-transform: uppercase;
+        font-size: 1.9rem;
+        text-align: center;
+        color:rgb(101, 101, 165);
+        margin-top: .5rem;
+        font-family: "over the rainbow", cursive, serif;
+        transition: all 1s;
+    }
+    
+    #versus {
+        font-style: italic;
+        font-size: 1.5rem;
+        
+    }
+    
+    div[data-players-score] {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center
+    }
+    
+    .score-button {
+        margin-top: 1rem;
+        padding: 0.7rem 1rem;
+        border-radius: 1rem;
+        border-color: rgb(162, 198, 198);
+        
+    }
+    
+    div[id="display-score"] {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-evenly;
+    }
+    
+    div.score-box {
+        margin-top: 0.7rem;
+        width: 7rem;
+        padding: 1.5rem 1.3rem;
+        font-size: 6rem;
+        box-shadow: 0 1px 4px rgb(116, 114, 114);
+        text-align: center;
+        border-radius: .7rem;
+    }
+    
+    h3[data-winner] {
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    span[data-final-winner] {
+        display: block;
+        color: rgb(59, 59, 146);
+        font-family: "over the rainbow", cursive, serif;
+        font-size: 2rem;
+        font-style: italic;
+        text-decoration:wavy;
+    }
+    
+    .hide {
+        display: none;
+    }
+    
