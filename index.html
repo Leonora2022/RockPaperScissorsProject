@@ -5,9 +5,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROCK PAPER SCISSORS </title>
+    <link rel="stylesheet" href="rock.css">
+    <script src="rock.js" defer></script>
 </head>
 <body>
-    
+    <div class="box">
+        <div id="game-title">
+            <button id="choice" data-notice>click on images for 10s</button>
+            <h1 id="title">Rock Paper Scissors</h1>
+        </div>
+        <div id="image-choices">
+            <div>
+            <button class="button" id="rock">&#x1FAA8</button>
+                 </div>
+            <div>
+            <button class="button" id="paper">&#x1F4C4</button>
+                 </div>
+                 <div>
+            <button class="button" id="scissors">✂️</button>
+                </div>
+        </div>
+        <div id="players">
+            <div data-human-player  class="player">
+                HUMAN PLAYER
+                <span data-display-human class="display-player"></span>
+            </div>
+            <strong id="versus">vs</strong>
+            <div data-computer-player class="player">
+                COMPUTER PLAYER
+                <span data-display-computer class="display-player"></span>
+            </div>
+        </div>
+        <div data-players-score>
+            <button class="score-button">Score</button>
+            <button class="score-button">Score</button>
+        </div>
+        <div id="display-score">
+            <div class="score-box" ><span data-human-score>0</span></div>
+            <div class="score-box" ><span data-computer-score>0</span></div>
+        </div>
+        <div id="winner">
+            <h3 data-winner>
+                Winner:
+                <span data-final-winner></span>
+            </h3>
+        </div>
 </body>
-<script  src = "game.js"> </script>
+
 </html>
