@@ -13,7 +13,7 @@ let humanPlayer;
 let computerPlayer;
   
 
-//event-handler
+//event-handler to play game
 function playGame(e) {
     notice.classList.add('hide');
     headerTitle.style.color = `rgb(${randomColor(255)},${randomColor(255)},${randomColor(255)})`;
@@ -56,7 +56,7 @@ function playRround(human, computer) {
     }
     if (human === 'scissors' && computer === 'rock') {
         verifyHumanPlayer.textContent = humanPlayer ;
-        verifyComputerPlayer.textContent = ' 🏆 ' + computerPlayer;
+        verifyComputerPlayer.textContent = ' 🏆 ' +  computerPlayer;
         computerScore.textContent = cScore += 1;
     }
     if (human === 'rock' && computer === 'paper') {
@@ -69,7 +69,7 @@ function playRround(human, computer) {
         verifyComputerPlayer.textContent = ' 🏆 ' + computerPlayer;
         computerScore.textContent = cScore += 1;
     }
-       //check for winner 
+       //check for winner between two players 
     if(hScore === 5 || cScore === 5) {
         if (hScore > cScore){
             finalWinner.textContent = `🏆 Human Player won!💥`;   
@@ -94,7 +94,7 @@ function randomColor(number) {
     return Math.floor(Math.random() * number);
 }
 
-//attach event listner to all buttons
+// event listener attached to all buttons
 for (let button of Array.from(buttons)) {
     button.addEventListener('click', playGame);
 }
