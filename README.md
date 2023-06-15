@@ -1,6 +1,5 @@
 # RockPaperScissorsProject
 Revisiting Rock Paper Scissors (Odin Project)
-
 In our UI, the player should be able to play the game by clicking on buttons rather than typing their answer in a prompt.
 
 1.For now, remove the logic that plays exactly five rounds.
