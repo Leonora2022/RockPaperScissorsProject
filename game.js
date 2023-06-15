@@ -1,101 +1,100 @@
-const gameChoices = ['rock', 'paper', 'scissors'];
-let buttons = document.querySelectorAll('button[class="button"]');
+// access elements from the DOM
+let buttons = document.querySelectorAll('.button');
 let verifyHumanPlayer = document.querySelector('[data-display-human]');
 let verifyComputerPlayer = document.querySelector('[data-display-computer]');
 let humanScore = document.querySelector('[data-human-score]');
 let computerScore = document.querySelector('[data-computer-score]');
 let finalWinner = document.querySelector('[data-final-winner]');
 let notice = document.querySelector('[data-notice]');
-let headerTitle = document.querySelector('h1[id="title"]');
+let headerTitle = document.querySelector('#title');
 
-
-let clickChoice;
+//variable declaration
 let humanPlayer;
 let computerPlayer;
-let winner;  
+  
 
-for (let button of Array.from(buttons)) {
-    button.addEventListener('mousedown', playGame);
-    button.addEventListener('mouseup', displayPlayers);
-}
-
+//event-handler
 function playGame(e) {
     notice.classList.add('hide');
     headerTitle.style.color = `rgb(${randomColor(255)},${randomColor(255)},${randomColor(255)})`;
-    clickChoice = e.currentTarget.id;
-    humanPlayer = gameChoices.find(gameChoice => gameChoice === clickChoice);
+    humanPlayer = e.currentTarget.id;
     computerPlayer = getComputerChoice();
-    winner = playGround(humanPlayer, computerPlayer);
-    
+     playRround(humanPlayer, computerPlayer);
 }
 
+const gameChoices = ['rock', 'paper', 'scissors'];
+//function for random choice from computer player
 function getComputerChoice() {
     var randomIndex = Math.floor(Math.random() * gameChoices.length);
     return gameChoices[randomIndex];
 }
 
-function playGround(human, computer) {
+//container to hold score
+let hScore = 0;
+let cScore = 0;
+
+//function to compare players
+function playRround(human, computer) {
     if (human === computer) {
-        return 'Draw';
+        verifyHumanPlayer.textContent = humanPlayer;
+        verifyComputerPlayer.textContent = computerPlayer;
     }
     if (human === 'rock' && computer === 'scissors') {
-        return 'Human Player';
+        verifyHumanPlayer.textContent = humanPlayer + ' 🏆 ';
+        verifyComputerPlayer.textContent = computerPlayer;
+        humanScore.textContent = hScore += 1;
     }
     if ( human === 'paper' && computer === 'rock') {
-        return 'Human Player';
+        verifyHumanPlayer.textContent = humanPlayer + ' 🏆 ';
+        verifyComputerPlayer.textContent = computerPlayer;
+        humanScore.textContent = hScore += 1;
     }
     if (human === 'scissors' && computer === 'paper') {
-        return 'Human Player';
+        verifyHumanPlayer.textContent = humanPlayer + ' 🏆 ';
+        verifyComputerPlayer.textContent = computerPlayer;
+        humanScore.textContent = hScore += 1;
     }
     if (human === 'scissors' && computer === 'rock') {
-        return 'Computer Player';
+        verifyHumanPlayer.textContent = humanPlayer ;
+        verifyComputerPlayer.textContent = ' 🏆 ' + computerPlayer;
+        computerScore.textContent = cScore += 1;
     }
     if (human === 'rock' && computer === 'paper') {
-        return 'Computer Player';
+        verifyHumanPlayer.textContent = humanPlayer ;
+        verifyComputerPlayer.textContent = ' 🏆 ' + computerPlayer;
+        computerScore.textContent = cScore += 1;
     }
     if (human === 'paper' && computer === 'scissors') {
-        return 'Computer Player';
+        verifyHumanPlayer.textContent = humanPlayer ;
+        verifyComputerPlayer.textContent = ' 🏆 ' + computerPlayer;
+        computerScore.textContent = cScore += 1;
+    }
+       //check for winner 
+    if(hScore === 5 || cScore === 5) {
+        if (hScore > cScore){
+            finalWinner.textContent = `🏆 Human Player won!💥`;   
+        } else finalWinner.textContent = `🏆 Computer Player won!💥`;
+        headerTitle.style.color = '';
+        notice.classList.remove('hide');
+        verifyHumanPlayer.style.visibility = 'hidden';
+        verifyComputerPlayer.style.visibility = 'hidden';
+        //remove event handler once winner is found
+        for (let button of Array.from(buttons)) {
+            button.removeEventListener('click', playGame);
+        }
+        //reload page in 1s after playing game
+        setTimeout(() => {
+            window.location.reload();
+        }, 1000);
     }
 }
 
-function displayPlayers(e) {
-    var count = 5;
-    verifyHumanPlayer.textContent = humanPlayer;
-    verifyHumanPlayer.style.visibility = 'visible';
-    verifyComputerPlayer.textContent = computerPlayer;
-    verifyComputerPlayer.style.visibility = 'visible';
-    if (winner === 'Human Player') {
-        humanScore.textContent = parseInt(humanScore.textContent) + 1;
-    }
-    if (winner === 'Computer Player') {
-        computerScore.textContent = parseInt(computerScore.textContent) + 1;
-    }
-   
-   if (humanScore.textContent == count && computerScore.textContent < count) {
-    finalWinner.textContent = `🏆 Human Player won!💥`; 
-   }
-
-   if (computerScore.textContent == count && humanScore.textContent < count){
-    finalWinner.textContent = `🏆 Computer Player won!💥`;
-   }
-
-   if (humanScore.textContent == count && computerScore.textContent == count) {
-    finalWinner.textContent = `🤭 It\'s a Draw!`;
-   }
-  
-   setTimeout(()=>{
-   if (finalWinner.textContent == `🏆 Human Player won!💥` ||`🏆 Computer Player won!💥`|| `🤭 It\'s a Draw!`) {
-    headerTitle.style.color = '';
-    verifyHumanPlayer.style.visibility = 'hidden';
-    verifyComputerPlayer.style.visibility = 'hidden';
-    humanScore.textContent = '0';
-    computerScore.textContent = '0';
-    finalWinner.textContent = '';
-    notice.classList.remove('hide')
-   }
-     }, 10000);
-}
-
+//random color function for game title
 function randomColor(number) {
     return Math.floor(Math.random() * number);
+}
+
+//attach event listner to all buttons
+for (let button of Array.from(buttons)) {
+    button.addEventListener('click', playGame);
 }
